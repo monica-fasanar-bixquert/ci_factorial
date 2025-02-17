@@ -1,18 +1,20 @@
-"""Módulo que contiene la función factorial"""
+"""Módulo que contiene la función factorial."""
 
-def factorial(entero):
+from typing import Union
+
+def factorial(numero: int) -> Union[int, bool]:
     """
-    Función para obtener el factorial de un número.
+    Calcula el factorial de un número.
+
     Entrada:
-    - entero: número entero a partir del cual se calculará el factorial.
+    - numero (int): Número entero no negativo.
+
     Salida:
-    - False/Número entero: en caso de ser una entrada incorrecta o poder
-    calcular el factorial.
+    - int | bool: El factorial del número si es válido, 
+        de lo contrario, False.
     """
-    if not isinstance(entero, int):
+    if not isinstance(numero, int) or numero < 0:
         return False
-    if entero < 0:
-        return False
-    if entero == 0 or entero == 1:
+    if numero in (0, 1):
         return 1
-    return entero * factorial(entero-1)
+    return numero * factorial(numero - 1)
